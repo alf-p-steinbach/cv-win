@@ -34,7 +34,7 @@ namespace cv_win {
             &n_bytes,
             CV_8UC1,
             const_cast<void*>( static_cast<const void*>( image_data.first() ) )
-        );
+            );
         return cv::imdecode( cv_image_data, cv::IMREAD_COLOR | cv::IMREAD_ANYDEPTH );
     }
 }  // namespace cv_win
