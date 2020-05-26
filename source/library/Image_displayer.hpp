@@ -9,7 +9,7 @@ namespace cv_win {
     class Image_displayer:
         public Abstract_image_displayer
     {
-        cv::Mat     m_image;
+        mutable cv::Mat     m_image;
 
     public:
         auto width() const
@@ -20,12 +20,14 @@ namespace cv_win {
             -> Size override
         { return m_image.rows; }
 
-        void display_on( const HDC dc )
+        void display_on( const HDC dc ) const
+            override
         {
             display_bgr( dc, m_image );
         }
 
-        void stretch_display_on( const HDC dc, const RECT& rect )
+        void stretch_display_on( const HDC dc, const RECT& rect ) const
+            override
         {
             $is_unused( dc );  $is_unused( rect );
             $fail( "Not implemented yet" );
